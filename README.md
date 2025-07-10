@@ -25,7 +25,9 @@ and create a user-friendly booking experience.
 
 - 📱 **Responsive Layout**  
   Works across desktops, tablets, and mobile devices.
-
+  
+- 🏨 **ChatBott**  
+  Interactive chatbot to solve your queries.
 
 ## 🛠️ Technologies Used
 
