@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelBook - Explore & Stay</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#cities">CITIES</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+            <li><a href="#map" id="mapButton">MAP</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-content" id="home">
+        <div class="city-selector">
+            <div class="city-selector-container">
+                <select id="citySelect">
+                    <option value="">Choose Destination 🌍</option>
+                    <option value="">Select City</option>
+                    <option value="paris">Paris</option>
+                    <option value="newyork">New York</option>
+                    <option value="tokyo">Tokyo</option>
+                    <option value="london">London</option>
+                    <option value="dubai">Dubai</option>
+                    <option value="rome">Rome</option>
+                    <option value="sydney">Sydney</option>
+                    <option value="barcelona">Barcelona</option>
+                    <option value="bangkok">Bangkok</option>
+                    <option value="rio">Rio de Janeiro</option>
+                    <option value="kyoto">Kyoto</option>
+                </select>
+                <button class="explore-btn" onclick="showCityDetailsFromDropdown()">
+                    Explore Now
+                </button>
+            </div>
+        </div>
+        <div class="loyalty-program">
+
+
+            <div class="message" id="messageBox"></div>
+        </div>
+
+
+        <h1>Explore Cities</h1>
+        <div class="city-gallery">
+            <!-- Paris Card -->
+            <div class="city-card" data-city="paris">
+                <img src="Paris.webp" alt="Paris">
+                <div class="city-overlay">
+                    <h3 class="city-name">Paris</h3>
+                    <button class="city-explore-btn" onclick="showCityDetails('paris')">Explore Now</button>
+                </div>
+            </div>
+
+            <!-- New York Card -->
+            <div class="city-card" data-city="newyork">
+                <img src="Newyork.jpg" alt="New York">
+                <div class="city-overlay">
+                    <h3 class="city-name">New York</h3>
+                    <button class="city-explore-btn" onclick="showCityDetails('newyork')">Explore Now</button>
+                </div>
+            </div>
+
+            <!-- Tokyo Card -->
+            <div class="city-card" data-city="tokyo">
+                <img src="Tokyo.jpg" alt="Tokyo">
+                <div class="city-overlay">
+                    <h3 class="city-name">Tokyo</h3>
+                    <button class="city-explore-btn" onclick="showCityDetails('tokyo')">Explore Now</button>
+                </div>
+            </div>
+
+
+            <div class="city-card" data-city="london">
+                <img src="London.jpg" alt="London">
+                <div class="city-overlay">
+                    <h3 class="city-name">London</h3>
+                    <button class="city-explore-btn" onclick="showCityDetails('london')">Explore Now</button>
+                </div>
+            </div>
+
+            <div class="city-card" data-city="dubai">
+                <img src="Dubai.jpg" alt="Dubai">
+                <div class="city-overlay">
+                    <h3 class="city-name">Dubai</h3>
+                    <button class="city-explore-btn" onclick="showCityDetails('dubai')">Explore Now</button>
+                </div>
+            </div>
+
+            <div class="city-card" data-city="rome">
+                <img src="Rome.jpg" alt="Rome">
+                <div class="city-overlay">
+                    <h3 class="city-name">Rome</h3>
+                    <button class="city-explore-btn" onclick="showCityDetails('rome')">Explore Now</button>
+                </div>
+            </div>
+
+            <div class="city-card" data-city="sydney">
+                <img src="Sydney.jpg" alt="Sydney">
+                <div class="city-overlay">
+                    <h3 class="city-name">Sydney</h3>
+                    <button class="city-explore-btn" onclick="showCityDetails('sydney')">Explore Now</button>
+                </div>
+            </div>
+
+            <div class="city-card" data-city="barcelona">
+                <img src="Barcelona.jpg" alt="Barcelona">
+                <div class="city-overlay">
+                    <h3 class="city-name">Barcelona</h3>
+                    <button class="city-explore-btn" onclick="showCityDetails('barcelona')">Explore Now</button>
+                </div>
+            </div>
+
+            <div class="city-card" data-city="bangkok">
+                <img src="Bangkok.jpg" alt="Bangkok">
+                <div class="city-overlay">
+                    <h3 class="city-name">Bangkok</h3>
+                    <button class="city-explore-btn" onclick="showCityDetails('bangkok')">Explore Now</button>
+                </div>
+            </div>
+
+            <div class="city-card" data-city="rio">
+                <img src="Rio.jpg" alt="Rio">
+                <div class="city-overlay">
+                    <h3 class="city-name">Rio</h3>
+                    <button class="city-explore-btn" onclick="showCityDetails('rio')">Explore Now</button>
+                </div>
+            </div>
+
+            <div class="city-card" data-city="kyoto">
+                <img src="Kyoto.jpg" alt="Kyoto">
+                <div class="city-overlay">
+                    <h3 class="city-name">Kyoto</h3>
+                    <button class="city-explore-btn" onclick="showCityDetails('kyoto')">Explore Now</button>
+                </div>
+            </div>
+
+            <div class="city-card" data-city="rome">
+                <img src="Rome.jpg" alt="Rome">
+                <div class="city-overlay">
+                    <h3 class="city-name">Rome</h3>
+                    <button class="city-explore-btn" onclick="showCityDetails('rome')">Explore Now</button>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <!-- City Details Page -->
+    <div class="city-details" id="cityDetails">
+        <h2 id="cityName"></h2>
+
+        <h3 class="section-title">Featured Hotels</h3>
+        <div class="hotel-list" id="hotelList"></div>
+
+        <h3 class="section-title">Popular Attractions</h3>
+        <div class="places-list" id="placesList"></div>
+
+
+        <div class="form-container">
+            <h2 class="booking">Booking Form</h2>
+            <form id="bookingForm">
+                <input type="text" id="name" placeholder="Your Name" required>
+                <input type="text" id="contact" placeholder="Contact Number" required>
+                <input type="text" id="place" placeholder="Place/Hotel Name" required>
+                <input type="number" id="rooms" placeholder="Number of Rooms" required>
+                <input type="number" id="days" placeholder="Number of Days" required>
+                <input type="date" id="date" required>
+                <button type="button" onclick="confirmBooking()">Confirm Booking</button>
+                <button type="button" class="reset-btn" onclick="resetForm()">Reset</button>
+            </form>
+            <div class="confirmation" id="confirmationMessage">Booking Confirmed!</div>
+        </div>
+
+        <button class="back-btn" onclick="goBack()">Back to Home</button>
+    </div>
+
+
+
+    <!-- Contact Form -->
+    <section class="contact-section" id="contact">
+        <h2>Contact Us</h2>
+        <form class="contact-form" id="contactForm">
+            <input type="text" placeholder="Name" required>
+            <input type="email" placeholder="Email" required>
+            <textarea placeholder="Message" rows="5" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <div class="chat-container" id="chatContainer">
+        <div class="chat-header" onclick="toggleChatBox()">Chat with us</div>
+        <div class="chat-body" id="chatBox"></div>
+        <div class="chat-footer">
+            <input type="text" id="userInput" class="chat-input" placeholder="Type a message...">
+            <button class="send-btn" onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <button class="chatbox-btn" onclick="toggleChatBox()">CHAT</button>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>TravelBook &copy; 2025</p>
+            <p>Contact: <a href="mailto:info@travelbook.com">info@travelbook.com</a></p>
+
+            <div class="social-media">
+                <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.whatsapp.com" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        function showCityDetails(city) {
+    document.querySelector('.main-content').style.display = 'none';
+    document.getElementById('cityDetails').style.display = 'block';
+    document.getElementById('cityName').textContent = city.charAt(0).toUpperCase() + city.slice(1);
+    
+    const hotels = cityData[city].hotels;
+    hotelList.innerHTML = hotels.map(hotel => `
+<div class="hotel-card">
+    <div class="card-image">
+        <img src="${hotel.image || 'default-hotel.jpg'}" alt="${hotel.name}">
+    </div>
+    <div class="card-content">
+        <h3>${hotel.name}</h3>
+        <div class="price-tag">${hotel.price}</div>
+        <div class="amenities">🏨 ${hotel.amenities}</div>
+    </div>
+</div>
+`).join('');
+
+    const places = cityData[city].places;
+    placesList.innerHTML = places.map(place => `
+<div class="place-card">
+    <div class="card-image">
+        <img src="${place.image || 'default-place.jpg'}" alt="${place.name}">
+    </div>
+    <div class="card-content">
+        <h3>${place.name}</h3>
+        <div class="price-tag">🎫 ${place.entry}</div>
+    </div>
+</div>
+`).join('');
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+function showCityDetailsFromDropdown() {
+    const selectedCity = document.getElementById('citySelect').value;
+    if (selectedCity) showCityDetails(selectedCity);
+}
+
+
+function goBack() {
+    document.querySelector('.main-content').style.display = 'block';
+    document.getElementById('cityDetails').style.display = 'none';
+}
+
+document.getElementById('contactForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    alert('Thank you for your message! We will respond shortly.');
+    this.reset();
+});
+
+const cityData = {
+    paris: {
+        hotels: [
+            { name: "Luxury Palace", price: "$300/night", amenities: "Pool, Spa, WiFi", image: "hotels.jpg" },
+            { name: "Eiffel View Hotel", price: "$200/night", amenities: "Breakfast, Bar", image: "hotelroom.avif" }
+        ],
+        places: [
+            { name: "Eiffel Tower", entry: "$25", image: "EifielTower.jpg" },
+            { name: "Louvre Museum", entry: "$20", image: "museum.webp" }
+        ]
+    },
+    newyork: {
+        hotels: [
+            { name: "Central Park Hotel", price: "$400/night", amenities: "Spa, Gym", image: "hotels.jpg" },
+            { name: "Times Square Suites", price: "$350/night", amenities: "Bar, WiFi", image: "hotelroom.avif" }
+        ],
+        places: [
+            { name: "Statue of Liberty", entry: "$30", image: "seahotel.jpg" },
+            { name: "Empire State Building", entry: "$40", image: "museum.webp" }
+        ]
+    },
+    tokyo: {
+        hotels: [
+            { name: "Sakura Inn", price: "$150/night", amenities: "Traditional Bath", image: "hotels.jpg" },
+            { name: "Tokyo Tower Hotel", price: "$250/night", amenities: "City View", image: "hotelroom.avif" }
+        ],
+        places: [
+            { name: "Senso-ji Temple", entry: "Free", image: "seahotel.jpg" },
+            { name: "Tokyo Skytree", entry: "$35", image: "museum.webp" }
+        ]
+    },
+    london: {
+        hotels: [
+            { name: "The Savoy", price: "$450/night", amenities: "River View, Afternoon Tea", image: "hotels.jpg" },
+            { name: "The Shard View Hotel", price: "$380/night", amenities: "Sky Pool, Luxury Spa", image: "hotelroom.avif" }
+        ],
+        places: [
+            { name: "Buckingham Palace", entry: "$40", image: "seahotel.jpg" },
+            { name: "Tower of London", entry: "$35", image: "museum.webp" }
+        ]
+    },
+    dubai: {
+        hotels: [
+            { name: "Burj Al Arab", price: "$900/night", amenities: "Private Beach, Helipad", image: "hotels.jpg" },
+            { name: "Atlantis The Palm", price: "$600/night", amenities: "Aquaventure Park Access", image: "hotelroom.avif" }
+        ],
+        places: [
+            { name: "Burj Khalifa", entry: "$55", image: "seahotel.jpg" },
+            { name: "Dubai Mall", entry: "Free", image: "museum.webp" }
+        ]
+    },
+    rome: {
+        hotels: [
+            { name: "Hotel de la Ville", price: "$300/night", amenities: "Rooftop Bar, Spa", image: "hotels.jpg" },
+            { name: "Pantheon View Suites", price: "$250/night", amenities: "Historic Center Location", image: "hotelroom.avif" }
+        ],
+        places: [
+            { name: "Colosseum", entry: "$25", image: "seahotel.jpg" },
+            { name: "Vatican Museums", entry: "$30", image: "museum.webp" }
+        ]
+    },
+    sydney: {
+        hotels: [
+            { name: "Opera View Hotel", price: "$350/night", amenities: "Harbor Bridge Views", image: "hotels.jpg" },
+            { name: "Bondi Beach Resort", price: "$280/night", amenities: "Oceanfront Pool", image: "hotelroom.avif" }
+        ],
+        places: [
+            { name: "Sydney Opera House", entry: "$40", image: "seahotel.jpg" },
+            { name: "Taronga Zoo", entry: "$35", image: "museum.webp" }
+        ]
+    },
+    barcelona: {
+        hotels: [
+            { name: "Sagrada Familia Suites", price: "$220/night", amenities: "Gaudi-inspired Design", image: "hotels.jpg" },
+            { name: "Gothic Quarter Hotel", price: "$180/night", amenities: "Historic Architecture", image: "hotelroom.avif" }
+        ],
+        places: [
+            { name: "Park Güell", entry: "$15", image: "seahotel.jpg" },
+            { name: "La Rambla", entry: "Free", image: "museum.webp" }
+        ]
+    },
+    bangkok: {
+        hotels: [
+            { name: "Royal Palace Hotel", price: "$120/night", amenities: "Floating Market Tours", image: "hotels.jpg" },
+            { name: "Sky Bar Residence", price: "$150/night", amenities: "Infinity Pool", image: "hotelroom.avif" }
+        ],
+        places: [
+            { name: "Wat Arun", entry: "$10", image: "seahotel.jpg" },
+            { name: "Chatuchak Market", entry: "Free", image: "museum.webp" }
+        ]
+    },
+    rio: {
+        hotels: [
+            { name: "Copacabana Palace", price: "$400/night", amenities: "Private Beach Access", image: "hotels.jpg" },
+            { name: "Christ the Redeemer View", price: "$320/night", amenities: "Mountain Tours", image: "hotelroom.avif" }
+        ],
+        places: [
+            { name: "Sugarloaf Mountain", entry: "$30", image: "seahotel.jpg" },
+            { name: "Carnaval Experience", entry: "$50", image: "museum.webp" }
+        ]
+    },
+    kyoto: {
+        hotels: [
+            { name: "Traditional Ryokan", price: "$200/night", amenities: "Onsen, Kaiseki Dinner", image: "hotels.jpg" },
+            { name: "Bamboo Forest Retreat", price: "$180/night", amenities: "Zen Garden", image: "hotelroom.avif" }
+        ],
+        places: [
+            { name: "Kinkaku-ji Temple", entry: "$10", image: "seahotel.jpg" },
+            { name: "Arashiyama Bamboo Grove", entry: "Free", image: "museum.webp" }
+        ]
+    }
+};
+function confirmBooking() {
+    let name = document.getElementById("name").value;
+    let contact = document.getElementById("contact").value;
+    let place = document.getElementById("place").value;
+    let rooms = document.getElementById("rooms").value;
+    let days = document.getElementById("days").value;
+    let date = document.getElementById("date").value;
+
+    if (name && contact && place && rooms && days && date) {
+        let confirmationMessage = `Booking Confirmed!<br><br>
+            <strong>Name:</strong> ${name}<br>
+            <strong>Contact:</strong> ${contact}<br>
+            <strong>Place/Hotel:</strong> ${place}<br>
+            <strong>Rooms:</strong> ${rooms}<br>
+            <strong>Days:</strong> ${days}<br>
+            <strong>Date:</strong> ${date}`;
+
+        document.getElementById("confirmationMessage").innerHTML = confirmationMessage;
+        document.getElementById("confirmationMessage").style.display = "block";
+    } else {
+        alert("Please fill out all fields before confirming your booking.");
+    }
+}
+function resetForm() {
+    document.getElementById("bookingForm").reset();
+    document.getElementById("confirmationMessage").style.display = "none";
+}
+
+// Chat Box
+// Toggle the chatbox visibility
+function toggleChatBox() {
+    const chatBox = document.getElementById('chatContainer');
+    chatBox.style.display = chatBox.style.display === 'block' ? 'none' : 'block';
+}
+
+// Function to send the user's message and get a bot reply
+function sendMessage() {
+    let userInput = document.getElementById("userInput").value.trim();
+    let chatBox = document.getElementById("chatBox");
+
+    if (userInput === "") return;
+
+    let userMessage = `<p class="user-message">${userInput}</p>`;
+    chatBox.innerHTML += userMessage;
+
+    setTimeout(() => {
+        let botReply = getBotResponse(userInput);
+        chatBox.innerHTML += `<p class="bot-message">${botReply}</p>`;
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }, 1000);
+
+    document.getElementById("userInput").value = "";
+}
+
+
+
+function getBotResponse(input) {
+    let responses = {
+        "hello": "Hi there! How can I assist you?",
+        "hi": "Good to see you! How may I assist you?",
+        "how are you": "I'm just a bot, but I'm doing great! 😊",
+        "weather": "Its Cool 🌤",
+        "bye": "Goodbye! Have a great day! 👋",
+        "Hotel nearby": "Please select city and click on explore button to get hotel details.",
+        "best places": "I'll need a moment to check that for you."
+
+    };
+
+    return responses[input.toLowerCase()] || "I'm not sure about that. Can you rephrase?";
+}
+
+document.getElementById("mapButton").addEventListener("click", function () {
+    window.open("https://www.google.com/maps", "_blank");
+});
+    </script>
+</body>
+
+</html>
